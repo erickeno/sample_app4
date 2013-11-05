@@ -3,67 +3,45 @@
 require 'spec_helper'
 
 describe "StatickPages" do
+
 	let(:base_title) {"Ruby on Rails Tutorial Sample App"}
+
+	subject { page }
+
+	#This is testing form the home page
+
 	describe "Home page" do
+		before {visit root_path}
 
-		#This is testing form the home page
-
-		it "should have the content 'Sample App'" do
-			visit '/statick_pages/home'
-			expect(page).to have_content('Sample App')
-		end
-
-		it "should have title home" do
-			visit '/statick_pages/home'
-			expect(page).to have_title("Ruby on Rails Tutorial Sample App")
-		end
-
-		it "should not have a custom page title" do
-			visit '/statick_pages/home'
-			expect(page).not_to have_title(' | Home')
-		end
+		it { should have_content('Sample App') }
+		it { should have_title(full_title('')) }
+		it { should_not have_title(' | Home') }
 	end
 
 	#This testing for the help page.
 
 	describe "Help page" do
-		it "should have the content 'Help' " do 
-			visit '/statick_pages/help'
-			expect(page).to have_content('Help')
-		end
+		before {visit help_path}
 
-		it "It should have title help" do
-			visit '/statick_pages/help'
-			expect(page).to have_title("#{base_title} | Help")
-		end
+		it { should have_content('Help') }
+		it { should have_title(full_title('Help')) }
 	end
 
 	#This is testing for the About us page.
 
 	describe "About page" do
-		it "should have the content 'About Us' " do 
-			visit '/statick_pages/about'
-			expect(page).to have_content('About Us')
-		end
+		before { visit about_path}
 
-		it "should have title About Us" do
-			visit '/statick_pages/about'
-			expect(page).to have_title("#{base_title} | About Us")
-		end
-
+		it { should have_content('About Us') }
+		it { should have_title(full_title('About Us')) }
 	end
 
 	#creating and testing the contact page
 	describe "Contact page" do
-		it "should have the content 'Contact Us'" do
-			visit '/statick_pages/contact'
-			expect(page).to have_content('Contact Us ')
-		end
+		before { visit contact_path}
 
-		it "should have title Contact as" do
-			visit '/statick_pages/contact'
-			expect(page).to have_title("#{base_title} | Contact Us")
-		end
+		it { should have_content('Contact Us') }
+		it { should have_title(full_title('Contact Us')) }
 	end
 
 	

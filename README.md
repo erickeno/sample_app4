@@ -1,5 +1,4 @@
-== README
 
 #This is my sample app no. 4 
 I am trying to go create a sample app just like the tutorial at http://railstutorial.org
-<tt>rake doc:app</tt>.
+
